@@ -220,3 +220,17 @@ reservedSeat?.reservedBy
 ).toBe('U200');
 }
 );
+
+test(
+'does not mutate original seat array',
+() => {
+reserveSeat(
+'A1',
+'U200',
+seats
+);
+expect(
+seats[0].status
+).toBe('AVAILABLE');
+}
+);

@@ -234,3 +234,18 @@ seats[0].status
 ).toBe('AVAILABLE');
 }
 );
+
+test(
+'cannot reserve an occupied seat',
+() => {
+expect(() =>
+reserveSeat(
+'B1',
+'U200',
+seats
+)
+).toThrow(
+'Seat is already reserved'
+);
+}
+);

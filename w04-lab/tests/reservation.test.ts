@@ -249,3 +249,18 @@ seats
 );
 }
 );
+
+test(
+'rejects blank user ID',
+() => {
+expect(() =>
+reserveSeat(
+'A1',
+'',
+seats
+)
+).toThrow(
+'Invalid user ID'
+);
+}
+);

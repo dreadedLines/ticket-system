@@ -49,3 +49,12 @@ calculatePrice(100, 1);
 expect(actual).toBe(100);
 }
 );
+
+test(
+'accepts maximum quantity 10',
+() => {
+const actual =
+calculatePrice(100, 10);
+expect(actual).toBe(1000);
+}
+);

@@ -1,10 +1,15 @@
 import {
 describe,
 test,
-expect
+expect,
+beforeEach
 } from 'vitest';
 import {
-calculatePrice
+calculatePrice,
+validateReservation,
+reserveSeat,
+cancelReservation,
+type Seat
 } from '../src/reservation';
 
 describe('calculatePrice()', () => {
@@ -106,3 +111,22 @@ calculatePrice(
 );
 }
 );
+
+let seats: Seat[];
+beforeEach(() => {
+seats = [
+{
+id: 'A1',
+status: 'AVAILABLE'
+},
+{
+id: 'A2',
+status: 'AVAILABLE'
+},
+{
+id: 'B1',
+status: 'RESERVED',
+reservedBy: 'U100'
+}
+];
+});

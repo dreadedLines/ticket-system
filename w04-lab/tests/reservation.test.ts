@@ -301,3 +301,18 @@ seats
 );
 }
 );
+
+test(
+'different user cannot cancel reservation',
+() => {
+expect(() =>
+cancelReservation(
+'B1',
+'U999',
+seats
+)
+).toThrow(
+'Only reserver can cancel'
+);
+}
+);

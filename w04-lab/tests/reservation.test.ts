@@ -91,3 +91,18 @@ calculatePrice(-100, 2)
 );
 }
 );
+
+test(
+'rejects discount greater than 100',
+() => {
+expect(() =>
+calculatePrice(
+100,
+2,
+101
+)
+).toThrow(
+'Discount must be between 0 and 100'
+);
+}
+);

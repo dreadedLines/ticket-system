@@ -69,3 +69,14 @@ calculatePrice(100, 0)
 );
 }
 );
+
+test(
+'rejects quantity 11',
+() => {
+expect(() =>
+calculatePrice(100, 11)
+).toThrow(
+'Quantity must be between 1 and 10'
+);
+}
+);

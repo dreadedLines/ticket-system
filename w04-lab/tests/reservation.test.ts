@@ -156,3 +156,31 @@ seats
 );
 }
 );
+
+test(
+'invalid seat ID causes validation error',
+() => {
+expect(() =>
+validateReservation(
+'???',
+seats
+)
+).toThrow(
+'Invalid seat ID'
+);
+}
+);
+
+test(
+'lowercase seat ID is invalid',
+() => {
+expect(() =>
+validateReservation(
+'a1',
+seats
+)
+).toThrow(
+'Invalid seat ID'
+);
+}
+);

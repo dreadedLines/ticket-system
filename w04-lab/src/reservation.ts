@@ -42,3 +42,11 @@ quantity *
 (1 - discountPercent / 100);
 return Math.round(total * 100) / 100;
 }
+
+function isValidSeatId(
+seatId: string
+): boolean {
+return /^[A-Z][1-9][0-9]?$/.test(
+seatId
+);
+}

@@ -78,3 +78,29 @@ throw new Error(
 }
 return true;
 }
+
+export function reserveSeat(
+seatId: string,
+userId: string,
+seats: Seat[]
+): Seat[] {
+if (!userId.trim()) {
+throw new Error(
+'Invalid user ID'
+);
+}
+validateReservation(
+seatId,
+seats
+);
+return seats.map(seat => {
+if (seat.id === seatId) {
+return {
+...seat,
+status: 'RESERVED',
+reservedBy: userId
+};
+}
+return seat;
+});
+}

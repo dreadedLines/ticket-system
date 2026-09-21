@@ -130,3 +130,15 @@ reservedBy: 'U100'
 }
 ];
 });
+
+test(
+'available seat passes validation',
+() => {
+const result =
+validateReservation(
+'A1',
+seats
+);
+expect(result).toBe(true);
+}
+);

@@ -58,3 +58,14 @@ calculatePrice(100, 10);
 expect(actual).toBe(1000);
 }
 );
+
+test(
+'rejects quantity 0',
+() => {
+expect(() =>
+calculatePrice(100, 0)
+).toThrow(
+'Quantity must be between 1 and 10'
+);
+}
+);

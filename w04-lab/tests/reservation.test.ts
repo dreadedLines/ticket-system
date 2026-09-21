@@ -40,3 +40,12 @@ calculatePrice(
 expect(actual).toBe(expected);
 }
 );
+
+test(
+'accepts minimum quantity 1',
+() => {
+const actual =
+calculatePrice(100, 1);
+expect(actual).toBe(100);
+}
+);

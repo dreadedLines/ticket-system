@@ -142,3 +142,17 @@ seats
 expect(result).toBe(true);
 }
 );
+
+test(
+'occupied seat cannot be reserved',
+() => {
+expect(() =>
+validateReservation(
+'B1',
+seats
+)
+).toThrow(
+'Seat is already reserved'
+);
+}
+);

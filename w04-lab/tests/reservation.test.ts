@@ -26,3 +26,17 @@ expect(actual).toBe(expected);
 }
 );
 });
+
+test(
+'applies a 10 percent discount',
+() => {
+const expected = 180;
+const actual =
+calculatePrice(
+100,
+2,
+10
+);
+expect(actual).toBe(expected);
+}
+);

@@ -264,3 +264,25 @@ seats
 );
 }
 );
+
+test(
+'reserved seat can be cancelled by reserver',
+() => {
+const updatedSeats =
+cancelReservation(
+'B1',
+'U100',
+seats
+);
+const cancelledSeat =
+updatedSeats.find(
+seat => seat.id === 'B1'
+);
+expect(
+cancelledSeat?.status
+).toBe('AVAILABLE');
+expect(
+cancelledSeat?.reservedBy
+).toBeUndefined();
+}
+);

@@ -104,3 +104,47 @@ reservedBy: userId
 return seat;
 });
 }
+
+export function cancelReservation(
+seatId: string,
+userId: string,
+seats: Seat[]
+): Seat[] {
+if (!isValidSeatId(seatId)) {
+throw new Error(
+'Invalid seat ID'
+);
+}
+const seat =
+seats.find(
+seat => seat.id === seatId
+);
+if (!seat) {
+throw new Error(
+'Seat not found'
+);
+}
+if (
+seat.status !== 'RESERVED'
+) {
+throw new Error(
+'Seat is not reserved'
+);
+}
+if (
+seat.reservedBy !== userId
+) {
+throw new Error(
+'Only reserver can cancel'
+);
+}
+return seats.map(seat => {
+if (seat.id === seatId) {
+return {
+id: seat.id,
+status: 'AVAILABLE'
+};
+}
+return seat;
+});
+}

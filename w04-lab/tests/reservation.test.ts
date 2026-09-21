@@ -198,3 +198,25 @@ seats
 );
 }
 );
+
+test(
+'reserves an available seat',
+() => {
+const updatedSeats =
+reserveSeat(
+'A1',
+'U200',
+seats
+);
+const reservedSeat =
+updatedSeats.find(
+seat => seat.id === 'A1'
+);
+expect(
+reservedSeat?.status
+).toBe('RESERVED');
+expect(
+reservedSeat?.reservedBy
+).toBe('U200');
+}
+);

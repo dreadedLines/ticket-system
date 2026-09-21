@@ -286,3 +286,18 @@ cancelledSeat?.reservedBy
 ).toBeUndefined();
 }
 );
+
+test(
+'cannot cancel an available seat',
+() => {
+expect(() =>
+cancelReservation(
+'A1',
+'U100',
+seats
+)
+).toThrow(
+'Seat is not reserved'
+);
+}
+);

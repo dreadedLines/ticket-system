@@ -184,3 +184,17 @@ seats
 );
 }
 );
+
+test(
+'nonexistent seat is rejected',
+() => {
+expect(() =>
+validateReservation(
+'C3',
+seats
+)
+).toThrow(
+'Seat not found'
+);
+}
+);

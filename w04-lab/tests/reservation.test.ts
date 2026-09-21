@@ -80,3 +80,14 @@ calculatePrice(100, 11)
 );
 }
 );
+
+test(
+'rejects negative price',
+() => {
+expect(() =>
+calculatePrice(-100, 2)
+).toThrow(
+'Invalid unit price'
+);
+}
+);

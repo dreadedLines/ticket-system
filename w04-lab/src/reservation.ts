@@ -50,3 +50,31 @@ return /^[A-Z][1-9][0-9]?$/.test(
 seatId
 );
 }
+
+export function validateReservation(
+seatId: string,
+seats: Seat[]
+): boolean {
+if (!isValidSeatId(seatId)) {
+throw new Error(
+'Invalid seat ID'
+);
+}
+const seat =
+seats.find(
+seat => seat.id === seatId
+);
+if (!seat) {
+throw new Error(
+'Seat not found'
+);
+}
+if (
+seat.status !== 'AVAILABLE'
+) {
+throw new Error(
+'Seat is already reserved'
+);
+}
+return true;
+}

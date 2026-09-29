@@ -2,6 +2,7 @@ import { describe, test, expect } from 'vitest';
 import {
 Seat,
 reserveSeat,
+cancelReservation
 } from '../src/reservation';
 describe('Seat Reservation', () => {
 test('an available seat can be reserved', () => {
@@ -31,5 +32,27 @@ reserveSeat(seat, 'U100');
 expect(() => {
 reserveSeat(seat, 'U200');
 }).toThrow('Seat is already reserved');
+}
+);
+
+test(
+'a cancelled seat can be reserved again',
+() => {
+// Arrange
+const seat: Seat = {
+id: 'A1',
+status: 'AVAILABLE',
+};
+reserveSeat(seat, 'U100');
+// Act
+cancelReservation(seat);
+// Assert
+expect(seat.status).toBe('AVAILABLE');
+expect(seat.reservedBy).toBeUndefined();
+// Act again
+reserveSeat(seat, 'U200');
+// Assert again
+expect(seat.status).toBe('RESERVED');
+expect(seat.reservedBy).toBe('U200');
 }
 );

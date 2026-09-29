@@ -25,3 +25,10 @@ throw new Error(
 );
 }
 }
+
+export function cancelReservation(
+seat: Seat
+): void {
+seat.status = 'AVAILABLE';
+delete seat.reservedBy;
+}
